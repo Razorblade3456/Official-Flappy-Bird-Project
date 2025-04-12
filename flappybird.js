@@ -61,7 +61,8 @@ window.onload = function () {
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //the set interval is every 1.5 seconds because 1500 miliseconds is 1.5 seconds
-    document.addEventListener("keydown", moveBird);
+    document.addEventListener("keydown", moveBird); //keyboard support
+    document.addEventListener("touchstart", jump); //tap screen support for mobile
 
 }
 
@@ -149,7 +150,7 @@ function placePipes() {
 
 function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "keyX") {
-        //jump
+        jump(); //shared jump function insstead of repeating logic
         velocityY = -6;
 
         //resetting the game
@@ -167,4 +168,16 @@ function detectCollision(a, b) {
             a.x + a.width > b.x &&
             a.y < b.y + b.height &&
             a.y + a.height> b.y;
+}
+
+function jump () {
+    velocityY = -6;
+
+    //reset the game if game pver
+    if(gameOver) {
+        bird.y = birdY; //resets the bird position
+        pipeArray = []; //resets the pipes
+        score = 0; //resets the score
+        gameOver = false; //restarts the game
+    }
 }
