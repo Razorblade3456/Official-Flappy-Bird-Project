@@ -57,7 +57,7 @@ window.onload = function () {
     topPipeImg.src = "./toppipe.png";
 
     bottomPipeImg = new Image();
-    bottomPipeImg.src = "./bottompipe.png";
+    bottomPipeImg.src = "./bottompipe.png"; 
 
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //the set interval is every 1.5 seconds because 1500 miliseconds is 1.5 seconds
@@ -111,7 +111,7 @@ function update() {
 
     if (gameOver) {
         context.fillText("GAME OVER", 5, 90);
-        context.fillText("Tap space to try", 18, 250);
+        context.fillText("Tap to try", 90, 250);
         context.fillText("again", 125, 300);
     }
  }
